@@ -1,0 +1,153 @@
+syntax = "v1"
+
+
+type (
+SearchStudentListReq {
+	UserID      int64     `json:"userId"`
+	Phone  string `json:"phone,optional"`
+	Name   string `json:"name,optional"`
+	Sex    int    `json:"sex，optional"`
+	Status int    `json:"status，optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchStudentInfoReq {
+	UserID      int64     `json:"userId"`
+	StudentID uint `json:"studentId"`
+}
+AddStudentReq {
+	UserID      int64     `json:"userId"`
+	Phone  string `json:"phone"`
+	Name   string `json:"name"`
+	Sex    int    `json:"sex"`
+}
+SaveStudentReq {
+	UserID      int64     `json:"userId"`
+	StudentID uint `json:"studentId"`
+	Phone  string `json:"phone,optional"`
+	Name   string `json:"name,optional"`
+	Sex    int    `json:"sex，optional"`
+	Status int    `json:"status，optional"`
+}
+DelStudentReq {
+	UserID      int64     `json:"userId"`
+	StudentID uint `json:"studentId"`
+}
+
+
+SearchParentListReq {
+	UserID      int64     `json:"userId"`
+	Phone  string `json:"phone,optional"`
+	StudentID uint `json:"studentId,optional"`
+	Name   string `json:"name,optional"`
+	Status int    `json:"status，optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchParentInfoReq {
+	UserID      int64     `json:"userId"`
+	ParentID uint `json:"parentId"`
+}
+AddParentReq {
+	UserID      int64     `json:"userId"`
+	Phone  string `json:"phone"`
+	Name   string `json:"name"`
+	Password    string   `json:"password"`
+	Remark   string `json:"remark,optional"`
+}
+SaveParentReq {
+	UserID      int64     `json:"userId"`
+	ParentID uint `json:"parentId"`
+	Phone  string `json:"phone,optional"`
+	Name   string `json:"name,optional"`
+	Status int    `json:"status，optional"`
+	Password string `json:"password,optional"`
+	Remark   string `json:"remark,optional"`
+}
+DelParentReq {
+	UserID      int64     `json:"userId"`
+	ParentID uint `json:"parentId"`
+}
+
+SearchFamilyListReq {
+	UserID      int64     `json:"userId"`
+	StudentID uint `json:"studentId,optional"`
+	ParentID uint `json:"parentId,optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchFamilyInfoReq {
+	UserID      int64     `json:"userId"`
+	StudentID uint `json:"studentId"`
+	ParentID uint `json:"parentId"`
+}
+AddFamilyReq {
+	UserID      int64     `json:"userId"`
+	StudentID uint `json:"studentId"`
+	ParentID uint `json:"parentId"`
+	Remark   string `json:"remark,optional"`
+}
+SaveFamilyReq {
+	UserID      int64     `json:"userId"`
+	FamilyID uint `json:"familyId"`
+	Remark   string `json:"remark"`
+}
+DelFamilyReq {
+	UserID      int64     `json:"userId"`
+	FamilyID uint `json:"familyId"`
+}
+
+
+)
+
+
+@server (
+	prefix:   /web/student
+	group:    student
+	timeout:  10s
+)
+service web-api {
+	@handler SearchStudentList
+	post /list (SearchStudentListReq) returns (BaseResp)
+	@handler SearchStudentInfo
+	post /info (SearchStudentInfoReq) returns (BaseResp)
+	@handler AddStudent
+	post /add (AddStudentReq) returns (BaseResp)
+	@handler SaveStudent
+	post /save (SaveStudentReq) returns (BaseResp)
+	@handler DelStudent
+	post /del (DelStudentReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/parent
+	group:    parent
+	timeout:  10s
+)
+service web-api {
+	@handler SearchParentList
+	post /list (SearchParentListReq) returns (BaseResp)
+	@handler SearchParentInfo
+	post /info (SearchParentInfoReq) returns (BaseResp)
+	@handler AddParent
+	post /add (AddParentReq) returns (BaseResp)
+	@handler SaveParent
+	post /save (SaveParentReq) returns (BaseResp)
+	@handler DelParent
+	post /del (DelParentReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/family
+	group:    family
+	timeout:  10s
+)
+service web-api {
+	@handler SearchFamilyList
+	post /list (SearchFamilyListReq) returns (BaseResp)
+	@handler SearchFamliyInfo
+	post /info (SearchFamilyInfoReq) returns (BaseResp)
+	@handler AddFamily
+	post /add (AddFamilyReq) returns (BaseResp)
+	@handler SaveFamily
+	post /save (SaveFamilyReq) returns (BaseResp)
+	@handler DelFamily
+	post /del (DelFamilyReq) returns (BaseResp)
+}

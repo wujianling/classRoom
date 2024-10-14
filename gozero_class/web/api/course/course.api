@@ -1,0 +1,166 @@
+syntax = "v1"
+
+
+type (
+SearchCourseListReq{
+	UserID      int64     `json:"userId"`
+}
+SearchCourseInfoReq{
+	UserID      int64     `json:"userId"`
+	CourseID      uint      `json:"courseId"`
+}
+AddCourseReq{
+	UserID      int64     `json:"userId"`
+	Name    string `json:"name"`
+	Cover   string `json:"cover"`
+	Content string `json:"content"`
+}
+SaveCourseReq{
+	UserID      int64     `json:"userId"`
+	CourseID      uint      `json:"courseId"`
+	Name    string `json:"name,optional"`
+	Cover   string `json:"cover,optional"`
+	Content string `json:"content,optional"`
+}
+DelCourseReq{
+	UserID      int64     `json:"userId"`
+	CourseID      uint      `json:"courseId"`
+}
+SearchCoursePackageListReq{
+	UserID      int64     `json:"userId"`
+	CourseID      uint      `json:"courseId,optional"`
+	ClassRoomID  uint `json:"classRoomID,optional"`
+	StudentID    uint `json:"studentID,optional"`
+	OrderID      string `json:"orderID，optional"`
+	Issue        int  `json:"issue,optional"`
+	FromType     int  `json:"fromType,optional"`
+	FromRef      uint `json:"fromRef,optional"`
+	Status       int  `json:"status,optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchCoursePackageInfoReq{
+	UserID      int64     `json:"userId"`
+	CoursePackageID      uint      `json:"coursePackageID"`
+}
+AddCoursePackageReq{
+	UserID      int64     `json:"userId"`
+	CourseID      uint      `json:"courseId"`
+	ClassRoomID  uint `json:"classRoomID"`
+	StudentID    uint `json:"studentID"`
+	OrderID      string `json:"orderID"`
+	Issue        int  `json:"issue"`
+	FromType     int  `json:"fromType"`
+	FromRef      uint `json:"fromRef"`
+	Status       int  `json:"status"`
+	FirstOrderID string `json:"firstOrderID"`
+	Num          int    `json:"num"`
+}
+SaveCoursePackageReq{
+	UserID      int64     `json:"userId"`
+	CoursePackageID      uint      `json:"coursePackageID"`
+	CourseID      uint      `json:"courseId,optional"`
+	ClassRoomID  uint `json:"classRoomID,optional"`
+	StudentID    uint `json:"studentID,optional"`
+	OrderID      string `json:"orderID,optional"`
+	Issue        int  `json:"issue,optional"`
+	FromType     int  `json:"fromType,optional"`
+	FromRef      uint `json:"fromRef,optional"`
+	Status       int  `json:"status,optional"`
+	FirstOrderID string `json:"firstOrderID,optional"`
+	Num          int    `json:"num,optional"`
+}
+DelCoursePackageReq{
+	UserID      int64     `json:"userId"`
+	CoursePackageID      uint      `json:"coursePackageID"`
+}
+SearchCourseLogListReq{
+	UserID      int64     `json:"userId"`
+	CoursePID  uint   `json:"coursePID"`
+	Type       int    `json:"type"`
+	OperatorID uint   `json:"operatorID"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchCourseLogInfoReq{
+	UserID      int64     `json:"userId"`
+	CourseLogID  uint   `json:"courseLogId"`
+}
+AddCourseLogReq{
+	UserID      int64     `json:"userId"`
+	CoursePID  uint   `json:"coursePID"`
+	Before     int    `json:"before"`
+	Change     int    `json:"change"`
+	After      int    `json:"after"`
+	Type       int    `json:"type"`
+	Memo       string `json:"memo,optional"`
+	OperatorID uint   `json:"operatorID"`
+}
+SaveCourseLogReq{
+	UserID      int64     `json:"userId"`
+	CourseLogID  uint   `json:"courseLogId"`
+	CoursePID  uint   `json:"coursePID,optional"`
+	Before     int    `json:"before,optional"`
+	Change     int    `json:"change,optional"`
+	After      int    `json:"after,optional"`
+	Type       int    `json:"type,optional"`
+	Memo       string `json:"memo,optional"`
+	OperatorID uint   `json:"operatorID,optional"`
+}
+DelCourseLogReq{
+	UserID      int64     `json:"userId"`
+	CourseLogID  uint   `json:"courseLogId"`
+}
+)
+
+
+@server (
+	prefix:   /web/course
+	group:    course
+	timeout:  10s
+)
+service web-api {
+	@handler SearchCourseList
+	post /list (SearchCourseListReq) returns (BaseResp)
+	@handler SearchCourseInfo
+	post /info (SearchCourseInfoReq) returns (BaseResp)
+	@handler AddCourse
+	post /add (AddCourseReq) returns (BaseResp)
+	@handler SaveCourse
+	post /save (SaveCourseReq) returns (BaseResp)
+	@handler DelCourse
+	post /del (DelCourseReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/course_package
+	group:    coursePackage
+	timeout:  10s
+)
+service web-api {
+	@handler SearchCoursePackageList
+	post /list (SearchCoursePackageListReq) returns (BaseResp)
+	@handler SearchCoursePackageInfo
+	post /info (SearchCoursePackageInfoReq) returns (BaseResp)
+	@handler AddCoursePackage
+	post /add (AddCoursePackageReq) returns (BaseResp)
+	@handler SaveCoursePackage
+	post /save (SaveCoursePackageReq) returns (BaseResp)
+	@handler DelCoursePackage
+	post /del (DelCoursePackageReq) returns (BaseResp)
+}
+@server (
+	prefix:   /web/course_log
+	group:    courseLog
+	timeout:  10s
+)
+service web-api {
+	@handler SearchCourseLogList
+	post /list (SearchCourseLogListReq) returns (BaseResp)
+	@handler SearchCourseLogInfo
+	post /info (SearchCourseLogInfoReq) returns (BaseResp)
+	@handler AddCourseLog
+	post /add (AddCourseLogReq) returns (BaseResp)
+	@handler SaveCourseLog
+	post /save (SaveCourseLogReq) returns (BaseResp)
+	@handler DelCourseLog
+	post /del (DelCourseLogReq) returns (BaseResp)
+}

@@ -1,0 +1,237 @@
+syntax = "v1"
+
+
+type (
+SearchClassRoomListReq{
+	UserID      int64     `json:"userId"`
+	Page       SelectPage `json:"page,optional"`
+	CourseID  uint   `json:"courseID,optional"`
+	Name      string `json:"name,optional"`
+	Stu   string `json:"stu"`
+	Status    int    `json:"status,optional"`
+}
+SearchClassRoomInfoReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomID uint `json:"classRoomId"`
+}
+AddClassRoomReq{
+	UserID      int64     `json:"userId"`
+	CourseID  uint   `json:"courseID"`
+	Name      string `json:"name"`
+	Introduce string `json:"introduce"`
+	MaxNum    int    `json:"maxNum"`
+	StuList   string `json:"stuList"`
+	Duration  int    `json:"duration"`
+	Cover     string `json:"cover"`
+	Status    int    `json:"status"`
+}
+SaveClassRoomReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomID uint `json:"classRoomId"`
+	CourseID  uint   `json:"courseID,optional"`
+	Name      string `json:"name,optional"`
+	Introduce string `json:"introduce,optional"`
+	MaxNum    int    `json:"maxNum,optional"`
+	StuList   string `json:"stuList,optional"`
+	Duration  int    `json:"duration,optional"`
+	Cover     string `json:"cover,optional"`
+	Status    int    `json:"status,optional"`
+}
+DelClassRoomReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomID uint `json:"classRoomId"`
+}
+
+SearchClassRoomInfoListReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomID uint `json:"classRoomId,optional"`
+	CourseID  uint      `json:"courseID,optional"`
+	TeacherID uint      `json:"teacherID,optional"`
+	MaxNum    int       `json:"maxNum,optional"`
+	CurNum    int       `json:"curNum,optional"`
+	Status    int       `json:"status,optional"`
+	StartTime1 int64 `json:"startTime1,optional"`
+	StartTime2 int64 `json:"startTime2,optional"`
+	EndTime1   int64 `json:"endTime1,optional"`
+	EndTime2  int64 `json:"endTime2,optional"`
+	Duration  int       `json:"duration"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchClassRoomInfoInfoReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomInfoID uint `json:"classRoomInfoId"`
+}
+AddClassRoomInfoReq{
+	UserID      int64     `json:"userId"`
+	CourseID  uint      `json:"courseID"`
+	ClassRoomID uint      `json:"classRoomId"`
+	TeacherID uint      `json:"teacherID"`
+	MaxNum    int       `json:"maxNum"`
+	CurNum    int       `json:"curNum"`
+	Status    int       `json:"status"`
+	StartTime int64 `json:"startTime"`
+	EndTime   int64 `json:"endTime"`
+	Duration  int       `json:"duration"`
+}
+SaveClassRoomInfoReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomInfoID uint `json:"classRoomInfoId"`
+	CourseID  uint      `json:"courseID,optional"`
+	ClassRoomID uint      `json:"classRoomId,optional"`
+	TeacherID uint      `json:"teacherID,optional"`
+	MaxNum    int       `json:"maxNum,optional"`
+	CurNum    int       `json:"curNum,optional"`
+	Status    int       `json:"status,optional"`
+	StartTime int64 `json:"startTime,optional"`
+	EndTime   int64 `json:"endTime,optional"`
+	Duration  int       `json:"duration,optional"`
+}
+DelClassRoomInfoReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomInfoID uint `json:"classRoomInfoId"`
+}
+
+SearchClassRoomStuListReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomID uint `json:"classRoomId,optional"`
+	StudentID   uint   `json:"studentID,optional"`
+	Status      int    `json:"status,optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchClassRoomStuInfoReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomStuID uint `json:"classRoomStuId"`
+}
+AddClassRoomStuReq{
+	UserID      int64     `json:"userId"`
+	ClassInfoID uint   `json:"classInfoID"`
+	StudentID   uint   `json:"studentID"`
+}
+SaveClassRoomStuReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomStuID uint `json:"classRoomStuId"`
+	ClassInfoID uint   `json:"classInfoID,optional"`
+	StudentID   uint   `json:"studentID,optional"`
+	Status      int    `json:"status,optional"`
+	Cover       string `json:"cover,optional"`
+	Video       string `json:"video,optional"`
+}
+DelClassRoomStuReq{
+	UserID      int64     `json:"userId"`
+	ClassRoomStuID uint `json:"classRoomStuId"`
+}
+SearchClassRoomTalkListReq{
+	UserID      int64     `json:"userId"`
+	ClassInfoID uint   `json:"classInfoID,optional"`
+	StudentID   uint   `json:"studentID,optional"`
+	TeacherID   uint   `json:"teacherID,optional"`
+	Type        uint   `json:"type,optional"`
+	FromTea     bool   `json:"fromTea,optional"`
+	IsStuRead   bool   `json:"isStuRead,optional"`
+	IsTeaRead   bool   `json:"isTeaRead,optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchClassRoomTalkInfoReq{
+	UserID      int64     `json:"userId"`
+	ClassInfoTalkID uint   `json:"classInfoTalkID"`
+}
+AddClassRoomTalkReq{
+	UserID      int64     `json:"userId"`
+	ClassInfoID uint   `json:"classInfoID"`
+	StudentID   uint   `json:"studentID"`
+	TeacherID   uint   `json:"teacherID"`
+	Content     string `json:"content"`
+	Type        uint   `json:"type"`
+	FromTea     bool   `json:"fromTea"`
+	IsStuRead   bool   `json:"isStuRead"`
+	IsTeaRead   bool   `json:"isTeaRead"`
+}
+SaveClassRoomTalkReq{
+	UserID      int64     `json:"userId"`
+	ClassInfoTalkID uint   `json:"classInfoTalkID"`
+	ClassInfoID uint   `json:"classInfoID,optional"`
+	StudentID   uint   `json:"studentID,optional"`
+	TeacherID   uint   `json:"teacherID,optional"`
+	Type        uint   `json:"type,optional"`
+	FromTea     bool   `json:"fromTea,optional"`
+	IsStuRead   bool   `json:"isStuRead,optional"`
+	IsTeaRead   bool   `json:"isTeaRead,optional"`
+}
+DelClassRoomTalkReq{
+	UserID      int64     `json:"userId"`
+	ClassInfoTalkID uint   `json:"classInfoTalkID"`
+}
+)
+
+
+@server (
+	prefix:   /web/classroom
+	group:    classroom
+	timeout:  10s
+)
+service web-api {
+	@handler SearchClassRoomList
+	post /list (SearchClassRoomListReq) returns (BaseResp)
+	@handler SearchClassRoomInfo
+	post /info (SearchClassRoomInfoReq) returns (BaseResp)
+	@handler AddClassRoom
+	post /add (AddClassRoomReq) returns (BaseResp)
+	@handler SaveClassRoom
+	post /save (SaveClassRoomReq) returns (BaseResp)
+	@handler DelClassRoom
+	post /del (DelClassRoomReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/classroom_info
+	group:    classroomInfo
+	timeout:  10s
+)
+service web-api {
+	@handler SearchClassRoomInfoList
+	post /list (SearchClassRoomInfoListReq) returns (BaseResp)
+	@handler SearchClassRoomInfoInfo
+	post /info (SearchClassRoomInfoInfoReq) returns (BaseResp)
+	@handler AddClassRoomInfo
+	post /add (AddClassRoomInfoReq) returns (BaseResp)
+	@handler SaveClassRoomInfo
+	post /save (SaveClassRoomInfoReq) returns (BaseResp)
+	@handler DelClassRoomInfo
+	post /del (DelClassRoomInfoReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/classroom_stu
+	group:    classroomStu
+	timeout:  10s
+)
+service web-api {
+	@handler SearchClassRoomStuList
+	post /list (SearchClassRoomStuListReq) returns (BaseResp)
+	@handler SearchClassRoomStuInfo
+	post /info (SearchClassRoomStuInfoReq) returns (BaseResp)
+	@handler AddClassRoomStu
+	post /add (AddClassRoomStuReq) returns (BaseResp)
+	@handler SaveClassRoomStu
+	post /save (SaveClassRoomStuReq) returns (BaseResp)
+	@handler DelClassRoomStu
+	post /del (DelClassRoomStuReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/classroom_talk
+	group:    classroomTalk
+	timeout:  10s
+)
+service web-api {
+	@handler SearchClassRoomTalkList
+	post /list (SearchClassRoomTalkListReq) returns (BaseResp)
+	@handler SearchClassRoomTalkInfo
+	post /info (SearchClassRoomTalkInfoReq) returns (BaseResp)
+	@handler AddClassRoomTalk
+	post /add (AddClassRoomTalkReq) returns (BaseResp)
+	@handler SaveClassRoomTalk
+	post /save (SaveClassRoomTalkReq) returns (BaseResp)
+	@handler DelClassRoomTalk
+	post /del (DelClassRoomTalkReq) returns (BaseResp)
+}

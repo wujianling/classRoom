@@ -1,0 +1,26 @@
+syntax = "v1"
+
+import "student/student.api"
+import "classroom/classroom.api"
+import "course/course.api"
+import "school/school.api"
+import "teacher/teacher.api"
+
+type (
+	BaseResp {
+		Code string      `json:"code"`
+		Data interface{} `json:"data"`
+		Msg  string      `json:"msg"`
+	}
+	SelectPage {
+		Page int32 `json:"page,optional"`
+		Size int32 `json:"size,optional"`
+	}
+	ReturnPage {
+		Page      int32 `json:"page"`
+		Size      int32 `json:"size"`
+		Total     int32 `json:"total"`
+		PageCount int32 `json:"pageCount"`
+	}
+)
+

@@ -1,0 +1,65 @@
+syntax = "v1"
+
+
+type (
+SearchTeacherListReq{
+	UserID      int64     `json:"userId"`
+	Name      string `json:"name,optional"`
+	Phone     string `json:"phone,optional"`
+	Typer     int    `json:"typer,optional"`
+	CourseID uint `json:"courseID,optional"`
+	RoomIds string `json:"roomIds,optional"`
+	Page       SelectPage `json:"page,optional"`
+}
+SearchTeacherInfoReq{
+	UserID      int64     `json:"userId"`
+	TeacherID      int64     `json:"teacherID"`
+}
+AddTeacherReq{
+	UserID      int64     `json:"userId"`
+	Name      string `json:"name"`
+	Phone     string `json:"phone"`
+	Password  string `json:"password"`
+	Avatar    string `json:"avatar,optional"`
+	Remark    string `json:"remark,optional"`
+	Typer     int    `json:"typer"`
+	CourseID uint `json:"courseID"`
+	RoomIds string `json:"roomIds,optional"`
+}
+SaveTeacherReq{
+	UserID      int64     `json:"userId"`
+	TeacherID      int64     `json:"teacherID"`
+	Name      string `json:"name,optional"`
+	Phone     string `json:"phone,optional"`
+	Password  string `json:"password,optional"`
+	Avatar    string `json:"avatar,optional"`
+	Remark    string `json:"remark,optional"`
+	Typer     int    `json:"typer,optional"`
+	CourseID uint `json:"courseID,optional"`
+	RoomIds string `json:"roomIds,optional"`
+}
+DelTeacherReq{
+	UserID      int64     `json:"userId"`
+	TeacherID      int64     `json:"teacherID"`
+}
+)
+
+
+@server (
+	prefix:   /web/teacher
+	group:    teacher
+	timeout:  10s
+)
+service web-api {
+	@handler SearchTeacherList
+	post /list (SearchTeacherListReq) returns (BaseResp)
+	@handler SearchTeacherInfo
+	post /info (SearchTeacherInfoReq) returns (BaseResp)
+	@handler AddTeacher
+	post /add (AddTeacherReq) returns (BaseResp)
+	@handler SaveTeacher
+	post /save (SaveTeacherReq) returns (BaseResp)
+	@handler DelTeacher
+	post /del (DelTeacherReq) returns (BaseResp)
+}
+

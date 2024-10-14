@@ -1,0 +1,55 @@
+syntax = "v1"
+
+type (
+	UserLoginReq {
+		OpenID string `json:"open_id"`
+	}
+	UserGetSMSCodeReq {
+		Phone  string `json:"phone"`
+		Mtehod string `json:"method,options=Check|Login"`
+	}
+	UserRegisterReq {
+		Phone    string `json:"phone"`
+		Name     string `json:"name,optional"`
+		Avatar   string `json:"avatar,optional"`
+		Code     string `json:"code"`
+		Password string `json:"password"`
+		OpenID   string `json:"openId,optional"`
+	}
+)
+
+type BaseResp {
+	Code int         `json:"code"`
+	Data interface{} `json:"data"`
+	Msg  string      `json:"msg"`
+}
+
+@server (
+	prefix:   /app
+	group:    user
+	timeout:  5s
+	maxBytes: 1048576
+)
+service app-api {
+	@handler UserLogin
+	post /login (UserLoginReq) returns (BaseResp)
+
+	@handler UserGetSMSCode
+	post /sms/get (UserGetSMSCodeReq) returns (BaseResp)
+
+	@handler UserRegister
+	post /register (UserRegisterReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /app
+	group:    user
+	jwt:      Auth
+	timeout:  5s
+	maxBytes: 1048576
+)
+service app-api {
+	@handler UserInfo
+	get /info returns (BaseResp)
+}
+

@@ -1,0 +1,8 @@
+Name: app-api
+Host: 0.0.0.0
+Port: 8888
+Auth:
+  AccessSecret: sdsadadasdasdsa
+  AccessExpire: 72000000
+Mysql:
+  Dsn: root:Admin@2024!@tcp(localhost:3306)/class_q?charset=utf8mb4&parseTime=True&loc=Local

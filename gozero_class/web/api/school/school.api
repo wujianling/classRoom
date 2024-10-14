@@ -1,0 +1,75 @@
+syntax = "v1"
+
+
+type (
+SearchSchoolBannerListReq{}
+SearchSchoolBannerInfoReq{}
+AddSchoolBannerReq{}
+SaveSchoolBannerReq{}
+DelSchoolBannerReq{}
+SearchSchoolNoticeListReq{}
+SearchSchoolNoticeInfoReq{}
+AddSchoolNoticeReq{}
+SaveSchoolNoticeReq{}
+DelSchoolNoticeReq{}
+SearchSchoolContentListReq{}
+SearchSchoolContentInfoReq{}
+AddSchoolContentReq{}
+SaveSchoolContentReq{}
+DelSchoolContentReq{}
+)
+
+
+@server (
+	prefix:   /web/school_banner
+	group:    schoolBanner
+	timeout:  10s
+)
+service web-api {
+	@handler SearchSchoolBannerList
+	post /list (SearchSchoolBannerListReq) returns (BaseResp)
+	@handler SearchSchoolBannerInfo
+	post /info (SearchSchoolBannerInfoReq) returns (BaseResp)
+	@handler AddSchoolBanner
+	post /add (AddSchoolBannerReq) returns (BaseResp)
+	@handler SaveSchoolBanner
+	post /save (SaveSchoolBannerReq) returns (BaseResp)
+	@handler DelSchoolBanner
+	post /del (DelSchoolBannerReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/school_notice
+	group:    schoolNotice
+	timeout:  10s
+)
+service web-api {
+	@handler SearchSchoolNoticeList
+	post /list (SearchSchoolNoticeListReq) returns (BaseResp)
+	@handler SearchSchoolNoticeInfo
+	post /info (SearchSchoolNoticeInfoReq) returns (BaseResp)
+	@handler AddSchoolNotice
+	post /add (AddSchoolNoticeReq) returns (BaseResp)
+	@handler SaveSchoolNotice
+	post /save (SaveSchoolNoticeReq) returns (BaseResp)
+	@handler DelSchoolNotice
+	post /del (DelSchoolNoticeReq) returns (BaseResp)
+}
+
+@server (
+	prefix:   /web/school_content
+	group:    schoolContent
+	timeout:  10s
+)
+service web-api {
+	@handler SearchSchoolContentList
+	post /list (SearchSchoolContentListReq) returns (BaseResp)
+	@handler SearchSchoolContent
+	post /info (SearchSchoolContentInfoReq) returns (BaseResp)
+	@handler AddSchoolContent
+	post /add (AddSchoolContentReq) returns (BaseResp)
+	@handler SaveSchoolContent
+	post /save (SaveSchoolContentReq) returns (BaseResp)
+	@handler DelSchoolContent
+	post /del (DelSchoolContentReq) returns (BaseResp)
+}
