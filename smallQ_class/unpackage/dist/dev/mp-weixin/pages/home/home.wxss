@@ -1,0 +1,50 @@
+/* 水平间距 */
+/* 水平间距 */
+.uni-margin-wrap {
+  width: 690rpx;
+  width: 100%;
+}
+.swiper {
+  height: 300rpx;
+}
+.swiper2 {
+  height: 200rpx;
+}
+.swiper-item {
+  display: block;
+  height: 300rpx;
+  line-height: 300rpx;
+  text-align: center;
+}
+.swiper-list {
+  margin-top: 40rpx;
+  margin-bottom: 0;
+}
+.uni-common-mt {
+  margin-top: 60rpx;
+  position: relative;
+}
+.image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.text {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.info {
+  position: absolute;
+  right: 20rpx;
+}
+.grid-item-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+}
+.uni-padding-wrap {
+  width: 550rpx;
+  padding: 0 100rpx;
+}

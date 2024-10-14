@@ -1,0 +1,104 @@
+/* 水平间距 */
+/* 水平间距 */
+.scroll-view.data-v-5233752c {
+  height: 100vh;
+  background: #eee;
+  box-sizing: border-box;
+}
+.message.data-v-5233752c {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30rpx;
+}
+.message .avatar.data-v-5233752c {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+}
+.message .content.data-v-5233752c {
+  min-height: 80rpx;
+  max-width: 60vw;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  line-height: 1.3;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  background: #fff;
+}
+.message .content image.data-v-5233752c {
+  width: 200rpx;
+}
+.message.self.data-v-5233752c {
+  justify-content: flex-end;
+}
+.message.self .avatar.data-v-5233752c {
+  margin: 0 0 0 30rpx;
+}
+.message.self .content.data-v-5233752c {
+  position: relative;
+}
+.message.self .content.data-v-5233752c::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 16rpx solid transparent;
+  border-left: 16rpx solid #fff;
+  right: -28rpx;
+  top: 24rpx;
+}
+.message.teacher .content.data-v-5233752c {
+  position: relative;
+}
+.message.teacher .content.data-v-5233752c::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 16rpx solid transparent;
+  border-right: 16rpx solid #fff;
+  left: -28rpx;
+  top: 24rpx;
+}
+.tool.data-v-5233752c {
+  position: fixed;
+  width: 100%;
+  min-height: 120rpx;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 20rpx 24rpx 20rpx 40rpx;
+  padding-bottom: calc(20rpx + constant(safe-area-inset-bottom) / 2) !important;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom) / 2) !important;
+}
+.tool .input.data-v-5233752c {
+  background: #eee;
+  border-radius: 10rpx;
+  height: 70rpx;
+  margin-right: 30rpx;
+  flex: 1;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.tool .thumb.data-v-5233752c {
+  width: 64rpx;
+}
+.popup-content.data-v-5233752c {
+  width: 100vw;
+  /* 全屏宽度 */
+  height: 100vh;
+  /* 全屏高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-image.data-v-5233752c {
+  width: 100%;
+  /* 保证图片按比例缩放 */
+  max-height: 100%;
+}

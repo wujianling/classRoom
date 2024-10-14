@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/room/room",
+    "pages/work/work",
+    "pages/work/detail",
+    "pages/mine/mine",
+    "pages/activity/activity"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/c1.png",
+        "selectedIconPath": "static/c1.png",
+        "text": "校区"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "iconPath": "static/c2.png",
+        "selectedIconPath": "static/c2.png",
+        "text": "校区"
+      },
+      {
+        "pagePath": "pages/room/room",
+        "iconPath": "static/c3.png",
+        "selectedIconPath": "static/c3.png",
+        "text": "课堂"
+      },
+      {
+        "pagePath": "pages/work/work",
+        "iconPath": "static/c4.png",
+        "selectedIconPath": "static/c4.png",
+        "text": "作业"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/c5.png",
+        "selectedIconPath": "static/c5.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
