@@ -19,6 +19,7 @@ import (
 // @in header
 // @name Authorization
 func main() {
+	d
 	location, err := time.LoadLocation("Asia/Shanghai")
 	if err != nil {
 		panic(err)

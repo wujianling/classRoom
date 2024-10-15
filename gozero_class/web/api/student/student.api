@@ -6,8 +6,8 @@ SearchStudentListReq {
 	UserID      int64     `json:"userId"`
 	Phone  string `json:"phone,optional"`
 	Name   string `json:"name,optional"`
-	Sex    int    `json:"sex，optional"`
-	Status int    `json:"status，optional"`
+	Sex    int    `json:"sex,optional"`
+	Status int    `json:"status,optional"`
 	Page       SelectPage `json:"page,optional"`
 }
 SearchStudentInfoReq {
@@ -25,8 +25,8 @@ SaveStudentReq {
 	StudentID uint `json:"studentId"`
 	Phone  string `json:"phone,optional"`
 	Name   string `json:"name,optional"`
-	Sex    int    `json:"sex，optional"`
-	Status int    `json:"status，optional"`
+	Sex    int    `json:"sex,optional"`
+	Status int    `json:"status,optional"`
 }
 DelStudentReq {
 	UserID      int64     `json:"userId"`
@@ -39,7 +39,7 @@ SearchParentListReq {
 	Phone  string `json:"phone,optional"`
 	StudentID uint `json:"studentId,optional"`
 	Name   string `json:"name,optional"`
-	Status int    `json:"status，optional"`
+	Status int    `json:"status,optional"`
 	Page       SelectPage `json:"page,optional"`
 }
 SearchParentInfoReq {
@@ -58,7 +58,7 @@ SaveParentReq {
 	ParentID uint `json:"parentId"`
 	Phone  string `json:"phone,optional"`
 	Name   string `json:"name,optional"`
-	Status int    `json:"status，optional"`
+	Status int    `json:"status,optional"`
 	Password string `json:"password,optional"`
 	Remark   string `json:"remark,optional"`
 }

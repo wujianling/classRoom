@@ -9,7 +9,7 @@ type CoursePackage struct {
 	FirstOrderID string `json:"firstOrderID" gorm:"column:first_order_id;not null;default:-1;index;comment:初始合同id"`
 	Issue        int    `json:"issue" gorm:"column:issue;not null;default:1;index;comment:第几期"`
 	FromType     int    `json:"fromType" gorm:"column:from_type;not null;default:1;index;comment:1 自然流 2 老师介绍 3学生介绍"`
-	FromRef      uint   `json:"fromRef" gorm:"column:from_ref;not null;default:-1;index;comment:关联人员id"`
+	FromRef      uint   `json:"fromRef" gorm:"column:from_ref;not null;default:0;index;comment:关联人员id"`
 	Status       int    `json:"status" gorm:"column:status;not null;default:1;comment:状态 1正常 2停用"`
 	Num          int    `json:"num" gorm:"column:num;not null;default:0;comment:剩余课时"`
 }

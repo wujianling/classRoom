@@ -2,6 +2,10 @@ package student
 
 import (
 	"context"
+	"fmt"
+	"github.com/smallq_class/internal/model"
+	"github.com/smallq_class/pkg/utils/db"
+	"github.com/smallq_class/pkg/utils/role"
 
 	"github.com/smallq_class/web/internal/svc"
 	"github.com/smallq_class/web/internal/types"
@@ -24,7 +28,49 @@ func NewSearchStudentListLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 }
 
 func (l *SearchStudentListLogic) SearchStudentList(req *types.SearchStudentListReq) (resp *types.BaseResp, err error) {
-	// todo: add your logic here and delete this line
+	quw := l.svcCtx.DB
+	adminRole, err := role.GetAdminRole(quw, req.UserID)
+	fmt.Println("adminRole")
+	fmt.Println(adminRole)
+	if err != nil {
+		return &types.BaseResp{
+			Code: -1,
+			Msg:  err.Error(),
+		}, nil
+	}
+	isAdmin := role.ContainsRole(adminRole, 1)
+	fmt.Println("isAdmin")
+	fmt.Println(isAdmin)
+	if !isAdmin {
+		return &types.BaseResp{
+			Code: -1,
+			Msg:  "没有权限",
+		}, nil
+	}
+	var students []model.Student
+	query := l.svcCtx.DB
 
-	return
+	if req.Name != "" {
+		query.Where("name like ? ", "%"+req.Name+"%")
+	}
+	if req.Phone != "" {
+		query.Where("phone like ? ", req.Phone+"%")
+	}
+	if req.Sex != 0 {
+		query.Where("sex = ? ", req.Sex)
+	}
+	if req.Status != 0 {
+		query.Where("status = ? ", req.Status)
+	}
+	page := db.Paginate(query, req.Page.Page, req.Page.Size)
+	if err := query.Find(&students).Error; err != nil {
+		return nil, err
+	}
+	return &types.BaseResp{
+		Code: 0,
+		Data: struct {
+			List []model.Student `json:"list"`
+			Page db.ReturnPage   `json:"page"`
+		}{students, page},
+	}, nil
 }

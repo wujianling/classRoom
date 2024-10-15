@@ -3,7 +3,7 @@ package model
 type Teacher struct {
 	BaseModel
 	Name     string `json:"name" gorm:"column:name;comment:名字"`
-	Phone    string `json:"phone" gorm:"column:phone;unique;index;comment:手机号"`
+	Phone    string `json:"phone" gorm:"column:phone;size:20;unique;index;comment:手机号"`
 	Password string `json:"password" gorm:"column:password;not null;comment:密码"`
 	Avatar   string `json:"avatar" gorm:"column:avatar;comment:头像"`
 	Remark   string `json:"remark" gorm:"column:remark;comment:备注"`

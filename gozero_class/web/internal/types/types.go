@@ -120,7 +120,7 @@ type AddTeacherReq struct {
 }
 
 type BaseResp struct {
-	Code string      `json:"code"`
+	Code int         `json:"code"`
 	Data interface{} `json:"data"`
 	Msg  string      `json:"msg"`
 }
@@ -291,7 +291,7 @@ type SaveParentReq struct {
 	ParentID uint   `json:"parentId"`
 	Phone    string `json:"phone,optional"`
 	Name     string `json:"name,optional"`
-	Status   int    `json:"status，optional"`
+	Status   int    `json:"status,optional"`
 	Password string `json:"password,optional"`
 	Remark   string `json:"remark,optional"`
 }
@@ -310,8 +310,8 @@ type SaveStudentReq struct {
 	StudentID uint   `json:"studentId"`
 	Phone     string `json:"phone,optional"`
 	Name      string `json:"name,optional"`
-	Sex       int    `json:"sex，optional"`
-	Status    int    `json:"status，optional"`
+	Sex       int    `json:"sex,optional"`
+	Status    int    `json:"status,optional"`
 }
 
 type SaveTeacherReq struct {
@@ -455,7 +455,7 @@ type SearchParentListReq struct {
 	Phone     string     `json:"phone,optional"`
 	StudentID uint       `json:"studentId,optional"`
 	Name      string     `json:"name,optional"`
-	Status    int        `json:"status，optional"`
+	Status    int        `json:"status,optional"`
 	Page      SelectPage `json:"page,optional"`
 }
 
@@ -486,8 +486,8 @@ type SearchStudentListReq struct {
 	UserID int64      `json:"userId"`
 	Phone  string     `json:"phone,optional"`
 	Name   string     `json:"name,optional"`
-	Sex    int        `json:"sex，optional"`
-	Status int        `json:"status，optional"`
+	Sex    int        `json:"sex,optional"`
+	Status int        `json:"status,optional"`
 	Page   SelectPage `json:"page,optional"`
 }
 
