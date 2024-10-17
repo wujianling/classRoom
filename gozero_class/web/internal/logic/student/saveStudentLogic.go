@@ -2,6 +2,7 @@ package student
 
 import (
 	"context"
+	"github.com/smallq_class/internal/model"
 	"github.com/smallq_class/pkg/utils/role"
 
 	"github.com/smallq_class/web/internal/svc"
@@ -40,6 +41,35 @@ func (l *SaveStudentLogic) SaveStudent(req *types.SaveStudentReq) (resp *types.B
 			Msg:  "没有权限",
 		}, nil
 	}
+	var student model.Student
+	l.svcCtx.DB.Where("id = ?", req.StudentID).First(&student)
+	if student.ID == 0 {
+		return &types.BaseResp{
+			Code: -1,
+			Msg:  "学生未找到",
+		}, nil
+	}
 
-	return
+	if req.Name != "" {
+		student.Name = req.Name
+	}
+	if req.Sex != 0 {
+		student.Sex = req.Sex
+	}
+	if req.Phone != "" {
+		var student2 model.Student
+		l.svcCtx.DB.Where("phone = ?", req.Phone).First(&student2)
+		if student.ID > 0 {
+			return &types.BaseResp{
+				Code: -1,
+				Msg:  "手机号已注册",
+			}, nil
+		}
+		student.Phone = req.Phone
+	}
+	l.svcCtx.DB.Save(&student)
+	return &types.BaseResp{
+		Code: 0,
+		Msg:  "修改成功！",
+	}, nil
 }

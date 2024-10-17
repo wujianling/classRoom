@@ -2,6 +2,7 @@ package student
 
 import (
 	"context"
+	"github.com/smallq_class/internal/model"
 	"github.com/smallq_class/pkg/utils/role"
 
 	"github.com/smallq_class/web/internal/svc"
@@ -40,6 +41,17 @@ func (l *DelStudentLogic) DelStudent(req *types.DelStudentReq) (resp *types.Base
 			Msg:  "没有权限",
 		}, nil
 	}
-
-	return
+	var student model.Student
+	l.svcCtx.DB.Where("id = ?", req.StudentID).First(&student)
+	if student.ID == 0 {
+		return &types.BaseResp{
+			Code: -1,
+			Msg:  "学生未找到",
+		}, nil
+	}
+	l.svcCtx.DB.Delete(&student)
+	return &types.BaseResp{
+		Code: 0,
+		Msg:  "删除成功！",
+	}, nil
 }

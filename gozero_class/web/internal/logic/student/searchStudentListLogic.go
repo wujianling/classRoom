@@ -51,17 +51,18 @@ func (l *SearchStudentListLogic) SearchStudentList(req *types.SearchStudentListR
 	query := l.svcCtx.DB
 
 	if req.Name != "" {
-		query.Where("name like ? ", "%"+req.Name+"%")
+		query.Where("student.name like ? ", "%"+req.Name+"%")
 	}
 	if req.Phone != "" {
-		query.Where("phone like ? ", req.Phone+"%")
+		query.Where("student.name  like ? ", req.Phone+"%")
 	}
 	if req.Sex != 0 {
-		query.Where("sex = ? ", req.Sex)
+		query.Where("student.name  = ? ", req.Sex)
 	}
 	if req.Status != 0 {
-		query.Where("status = ? ", req.Status)
+		query.Where("student.name  = ? ", req.Status)
 	}
+	query.Joins("left join course_package on ")
 	page := db.Paginate(query, req.Page.Page, req.Page.Size)
 	if err := query.Find(&students).Error; err != nil {
 		return nil, err

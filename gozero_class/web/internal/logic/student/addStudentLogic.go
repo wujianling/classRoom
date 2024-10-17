@@ -2,6 +2,7 @@ package student
 
 import (
 	"context"
+	"github.com/smallq_class/internal/model"
 	"github.com/smallq_class/pkg/utils/role"
 
 	"github.com/smallq_class/web/internal/svc"
@@ -40,6 +41,21 @@ func (l *AddStudentLogic) AddStudent(req *types.AddStudentReq) (resp *types.Base
 			Msg:  "没有权限",
 		}, nil
 	}
+	var student model.Student
+	l.svcCtx.DB.Where("phone = ?", req.Phone).First(&student)
+	if student.ID > 0 {
+		return &types.BaseResp{
+			Code: -1,
+			Msg:  "手机号已注册",
+		}, nil
+	}
+	student.Name = req.Name
+	student.Phone = req.Phone
+	student.Sex = req.Sex
+	l.svcCtx.DB.Create(&student)
 
-	return
+	return &types.BaseResp{
+		Code: 0,
+		Msg:  "注册成功！",
+	}, nil
 }
